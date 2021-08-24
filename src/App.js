@@ -55,14 +55,14 @@ class App extends Component{
             />
 
             <Route
-              path='/todos'
-              render={(routerProps) =>
-              this.setState.token ? ( 
-                <ToDos {...routerProps}/>
-              ) : (
-                <Redirect to='/singin'/>
-              )
-              }
+                path="/todos"
+                render={(routerProps) =>
+                   this.state.token ? (
+                        <ToDos {...routerProps} />
+                    ) : (
+                        <Redirect to="/signin" />
+                    )
+                }
             />
           </Switch>
       </section>
