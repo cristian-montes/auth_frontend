@@ -2,13 +2,11 @@ import React, { Component } from 'react';
 import { getToken} from '../utils/fetch-utils.js';
 
 class Auth extends Component {
-    state = {emai:'', password:'' }
+    state = {emai:'', password:'' };
 
-
-    getType =() => {
+    getType = () => {
         return this.props.type === 'signin' ? 'Sign In' : 'Sign Up';
     };
-
 
     handleSubmit = async (e) => {
         e.preventDefault();
@@ -26,29 +24,28 @@ class Auth extends Component {
     render() { 
         return ( 
             <>
-                <p>{this.getType}</p>
+                <p>{this.getType()}</p>
+                <h1> HOLLAAAAAA</h1>
                 <form onSubmit={this.handleSubmit}>              
-                    <div className='email-div'> 
-                        <label htmlFor='email-address'> email </label>
+                    <div className='form-control'> 
+                        <label> email </label>
                         <input 
                             type='email' 
-                            name='email-address' 
-                            onChange={(event) => {
+                            onChange={(event) => 
                                 this.setState({email: event.target.value})
-                            }}
+                            }
                         />
                     </div>
-                    <div className='password-div'> 
-                        <label htmlFor='password'> password </label>
+                    <div className='form-control'> 
+                        <label> password </label>
                         <input 
                             type='password' 
-                            name='password'
-                            onChange={(event) => {
+                            onChange={(event) => 
                                 this.setState({password: event.target.value})
-                            }}
+                            }
                         />
                     </div>
-                    <button>{this.getType}</button>
+                    <button>{this.getType()}</button>
                 </form>
             </>
          );

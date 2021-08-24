@@ -2,8 +2,8 @@
 import { Component } from 'react';
 import { BrowserRouter, Switch, Route, NavLink, Redirect } from 'react-router-dom';
 import Home from './Home/Home'
-import Auth from './Auth/Auth';
-import ToDos from './ToDos/ToDos';
+import Auth from './Auth/Auth.js';
+import ToDos from './ToDos/ToDos.js';
 import './App.css';
 
 
@@ -23,15 +23,19 @@ class App extends Component{
       <NavLink exact to="/"> Home </NavLink>
         <NavLink to="/signin"> Sign In</NavLink>
         <NavLink to="/signup"> Sign Up</NavLink>
+        <div>
+          TOKEN:
+          {this.state.token && this.state.token.toString()}
+        </div>
       </header>
-      <div className='main-div'>
+      <section className='main'>
           <Switch>
             <Route exact path='/' component={Home}/>
 
             <Route 
               path='/signin' 
               render={(routerProps) => {
-                <Auth 
+                return <Auth 
                     setToken={this.setToken}
                     type='signin'
                     {...routerProps}
@@ -42,7 +46,7 @@ class App extends Component{
             <Route
               path='/signup'
               render={(routerProps) =>{
-                <Auth
+               return <Auth
                   setToken={this.setToken}
                   type='signup'
                   {...routerProps}
@@ -61,7 +65,7 @@ class App extends Component{
               }
             />
           </Switch>
-      </div>
+      </section>
     </BrowserRouter>
   );
 }
