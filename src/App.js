@@ -1,25 +1,66 @@
-import logo from './logo.svg';
+
+import { Component } from 'react';
+import { BrowserRouter, Switch, Route, NavLink, Redirect } from 'react-router-dom';
+import Home from './Home/Home'
+import Auth from './Auth/Auth';
+import ToDos from './ToDos/ToDos';
 import './App.css';
 
-function App() {
+
+class App extends Component{
+  state={}
+
+
+
+  render(){
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <BrowserRouter>
+      <header>
+      <NavLink exact to="/"> Home </NavLink>
+        <NavLink to="/signin"> Sign In</NavLink>
+        <NavLink to="/signup"> Sign Up</NavLink>
       </header>
-    </div>
+      <div className='main-div'>
+          <Switch>
+            <Route exact path='/' component={Home}/>
+
+            <Route 
+              path='/signin' 
+              render={(routerProps) => {
+                <Auth 
+                    setToken={this.setToken}
+                    type='signin'
+                    {...routerProps}
+                />
+              }}
+            />
+
+            <Route
+              path='/signup'
+              render={(routerProps) =>{
+                <Auth
+                  setToken={this.setToken}
+                  type='signup'
+                  {...routerProps}
+                />
+              }}
+            />
+
+            <Route
+              path='/todos'
+              render={(routerProps) =>
+              this.setState.token ? ( 
+                <ToDos {...routerProps}/>
+              ) : (
+                <Redirect to='/singin'/>
+              )
+              }
+            />
+          </Switch>
+      </div>
+    </BrowserRouter>
   );
+}
 }
 
 export default App;
