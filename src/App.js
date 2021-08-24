@@ -8,9 +8,13 @@ import './App.css';
 
 
 class App extends Component{
-  state={}
+  state={
+      token: localStorage.getItem('TOKEN'),
+  }
 
-
+  setToken = (val) => {
+    this.setState({ token: val });
+  };
 
   render(){
   return (
