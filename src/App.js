@@ -20,9 +20,9 @@ class App extends Component{
   return (
     <BrowserRouter>
       <header>
-      <NavLink exact to="/"> Home </NavLink>
-        <NavLink to="/signin"> Sign In</NavLink>
-        <NavLink to="/signup"> Sign Up</NavLink>
+      <NavLink exact to="/"> Home </NavLink> <br/>
+        <NavLink to="/signin"> Sign In</NavLink><br/>
+        <NavLink to="/signup"> Sign Up</NavLink><br/>
         <div>
           TOKEN:
           {this.state.token && this.state.token.toString()}
@@ -63,6 +63,10 @@ class App extends Component{
                         <Redirect to="/signin" />
                     )
                 }
+            />
+
+            <Route
+              
             />
           </Switch>
       </section>

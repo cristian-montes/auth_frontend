@@ -18,3 +18,39 @@ export async function getToken(loginInfo, type){
     return data.token;
 
 }
+
+
+//GET TODOS
+export async function getToDos(){
+    const apiURL = `${URL}/api/todos`;
+    let token = localStorage.getItem('TOKEN');
+
+    const resp = await fetch(apiURL, {
+        method: 'GET',
+        withCredentials: true,
+        headers: {
+          'Authorization': token,
+          'Content-Type': 'application/json'
+        }
+    });
+    const data = await resp.json();
+    return data;
+}
+
+// CREATE NEW TODO
+export async function createToDo(toDoObj){
+    const apiURL = `${URL}/api/todos`;
+    let token = localStorage.getItem('TOKEN');
+
+    const resp = await fetch(apiURL, {
+        method:'POST',
+        withCredentials: true,
+        headers: {
+          'Authorization': token,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(toDoObj),
+    });
+    const data = await resp.json();
+    return data;
+}
