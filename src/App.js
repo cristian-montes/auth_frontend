@@ -24,8 +24,7 @@ class App extends Component{
         <NavLink to="/signin"> Sign In</NavLink><br/>
         <NavLink to="/signup"> Sign Up</NavLink><br/>
         <div>
-          TOKEN:
-          {this.state.token && this.state.token.toString()}
+         
         </div>
       </header>
       <section className='main'>
