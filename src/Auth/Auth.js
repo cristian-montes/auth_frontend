@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { getToken} from '../utils/fetch-utils.js';
-
+import { Button, Typography } from '@material-ui/core';
+import TextField from '@material-ui/core/TextField';
 class Auth extends Component {
     state = {emai:'', password:'' };
 
@@ -17,6 +18,7 @@ class Auth extends Component {
             },
             this.props.type
         )
+        console.log(this.state.email);
         this.props.setToken(token);
         this.props.history.push('/todos');
     }
@@ -24,28 +26,49 @@ class Auth extends Component {
     render() { 
         return ( 
             <>
-                <p>{this.getType()}</p>
-                <h1> HOLLAAAAAA</h1>
+                <Typography variant='h3' >{this.getType()}</Typography >
+                
                 <form onSubmit={this.handleSubmit}>              
                     <div className='form-control'> 
-                        <label> email </label>
+                        <TextField
+                            label="Email"
+                            type="email"
+                            autoComplete="current-email"
+                            onChange={(event) => 
+                                this.setState({email: event.target.value})
+                            }
+                        />
+
+
+                        {/* <label> email </label>
                         <input 
                             type='email' 
                             onChange={(event) => 
                                 this.setState({email: event.target.value})
                             }
-                        />
+                        /> */}
                     </div>
                     <div className='form-control'> 
-                        <label> password </label>
+                    <TextField
+                            id="standard-password-input"
+                            label="Password"
+                            type="password"
+                            autoComplete="current-password"
+                            onChange={(event) => 
+                                this.setState({password: event.target.value})
+                            }
+                        />
+                    
+
+                        {/* <label> password </label>
                         <input 
                             type='password' 
                             onChange={(event) => 
                                 this.setState({password: event.target.value})
                             }
-                        />
+                        /> */}
                     </div>
-                    <button>{this.getType()}</button>
+                    <Button color="primary" variant='outlined' type='submit'>{this.getType()}</Button>
                 </form>
             </>
          );
