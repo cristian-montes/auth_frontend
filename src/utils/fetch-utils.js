@@ -1,4 +1,5 @@
-const URL = 'http://localhost:7890';
+// const URL = 'http://localhost:7890';
+const URL = 'https://radiant-reef-79443.herokuapp.com';
 
 export async function getToken(loginInfo, type){
      // type -- 'signin' or 'signup'
