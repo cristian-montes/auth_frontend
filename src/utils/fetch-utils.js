@@ -52,5 +52,24 @@ export async function createToDo(toDoObj){
         body: JSON.stringify(toDoObj),
     });
     const data = await resp.json();
-    return data;;;;
+    return data;
+}
+
+//UPDATE TODO
+export async function updateToDo(toDoObj){
+    const apiURL = `${URL}/api/todos/${toDoObj.id}`;
+    let token = localStorage.getItem('TOKEN');
+
+    const resp = await fetch(apiURL, {
+        method:'PUT',
+        withCredentials: true,
+        headers: {
+          'Authorization': token,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(toDoObj),
+    });
+    const data = await resp.json();
+    return data;
+
 }
