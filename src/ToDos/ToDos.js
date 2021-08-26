@@ -30,7 +30,7 @@ class ToDos extends Component {
 
     handleCompleted = async (tidi)=> {
         tidi.completed = !tidi.completed;
-        const data = await updateToDo(tidi)
+         await updateToDo(tidi)
         this.fetchToDos();
     }
 
