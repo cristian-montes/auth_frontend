@@ -1,25 +1,77 @@
-import logo from './logo.svg';
+
+import { Component } from 'react';
+import { BrowserRouter, Switch, Route, NavLink, Redirect } from 'react-router-dom';
+import Home from './Home/Home'
+import Auth from './Auth/Auth.js';
+import ToDos from './ToDos/ToDos.js';
 import './App.css';
 
-function App() {
+
+class App extends Component{
+  state={
+      token: localStorage.getItem('TOKEN'),
+  }
+
+  setToken = (val) => {
+    this.setState({ token: val });
+  };
+
+  render(){
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <BrowserRouter>
+      <header>
+      <NavLink exact to="/"> Home </NavLink> <br/>
+        <NavLink to="/signin"> Sign In</NavLink><br/>
+        <NavLink to="/signup"> Sign Up</NavLink><br/>
+        <div>
+         
+        </div>
       </header>
-    </div>
+      <section className='main'>
+          <Switch>
+            <Route exact path='/' component={Home}/>
+
+            <Route 
+              path='/signin' 
+              render={(routerProps) => {
+                return <Auth 
+                    setToken={this.setToken}
+                    type='signin'
+                    {...routerProps}
+                />
+              }}
+            />
+
+            <Route
+              path='/signup'
+              render={(routerProps) =>{
+               return <Auth
+                  setToken={this.setToken}
+                  type='signup'
+                  {...routerProps}
+                />
+              }}
+            />
+
+            <Route
+                path="/todos"
+                render={(routerProps) =>
+                   this.state.token ? (
+                        <ToDos {...routerProps} />
+                    ) : (
+                        <Redirect to="/signin" />
+                    )
+                }
+            />
+
+            <Route
+              
+            />
+          </Switch>
+      </section>
+    </BrowserRouter>
   );
+}
 }
 
 export default App;
