@@ -1,6 +1,7 @@
 
 import { Component } from 'react';
-import { BrowserRouter, Switch, Route, NavLink, Redirect } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import Header from './Header/Header'
 import Home from './Home/Home'
 import Auth from './Auth/Auth.js';
 import ToDos from './ToDos/ToDos.js';
@@ -19,14 +20,7 @@ class App extends Component{
   render(){
   return (
     <BrowserRouter>
-      <header>
-      <NavLink exact to="/"> Home </NavLink> <br/>
-        <NavLink to="/signin"> Sign In</NavLink><br/>
-        <NavLink to="/signup"> Sign Up</NavLink><br/>
-        <div>
-         
-        </div>
-      </header>
+      <Header/>
       <section className='main'>
           <Switch>
             <Route exact path='/' component={Home}/>

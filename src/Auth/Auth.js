@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { getToken} from '../utils/fetch-utils.js';
 import { Button, Typography } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
+import './Auth.css';
+
 class Auth extends Component {
     state = {emai:'', password:'' };
 
@@ -25,7 +27,7 @@ class Auth extends Component {
 
     render() { 
         return ( 
-            <>
+            <div className='form-div'>
                 <Typography variant='h3' >{this.getType()}</Typography >
                 
                 <form onSubmit={this.handleSubmit}>              
@@ -38,16 +40,8 @@ class Auth extends Component {
                                 this.setState({email: event.target.value})
                             }
                         />
-
-
-                        {/* <label> email </label>
-                        <input 
-                            type='email' 
-                            onChange={(event) => 
-                                this.setState({email: event.target.value})
-                            }
-                        /> */}
                     </div>
+
                     <div className='form-control'> 
                     <TextField
                             id="standard-password-input"
@@ -59,18 +53,12 @@ class Auth extends Component {
                             }
                         />
                     
-
-                        {/* <label> password </label>
-                        <input 
-                            type='password' 
-                            onChange={(event) => 
-                                this.setState({password: event.target.value})
-                            }
-                        /> */}
                     </div>
-                    <Button color="primary" variant='outlined' type='submit'>{this.getType()}</Button>
+
+                    <Button className={'signBtn'} color="primary" variant='outlined' type='submit'>{this.getType()}</Button>
+               
                 </form>
-            </>
+            </div>
          );
     }
 }

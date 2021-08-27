@@ -36,7 +36,7 @@ class ToDos extends Component {
 
     render() { 
         return (  
-            <>
+            <div className='todos-div'>
                 <h1> S...tuff to get done vato</h1>
                 <section className='todos-div'>
                     {this.state.toDos.map((tidi)=>( 
@@ -64,7 +64,7 @@ class ToDos extends Component {
                     </form>
                 </section>
                 
-            </>
+            </div>
         );
     }
 }

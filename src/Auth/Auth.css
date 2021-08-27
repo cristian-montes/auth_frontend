@@ -1,0 +1,15 @@
+.form-div{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: calc(1.5rem + 6vmin);
+}
+
+.signBtn{
+    margin-top:calc(1.5rem + 6vmin); 
+    /* background-color: palevioletred; */
+}
+
+.form-control{
+    margin-bottom: 18px;
+}
