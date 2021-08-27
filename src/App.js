@@ -1,6 +1,6 @@
 
 import { Component } from 'react';
-import { BrowserRouter, Switch, Route, NavLink, Redirect } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import Header from './Header/Header'
 import Home from './Home/Home'
 import Auth from './Auth/Auth.js';
